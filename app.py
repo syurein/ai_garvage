@@ -4,6 +4,7 @@ from torchvision import transforms
 from flask import Flask, request, jsonify, render_template
 from PIL import Image
 import io
+import os
 
 # --- 1. モデル定義と設定 ---
 
@@ -96,4 +97,4 @@ def predict():
 # --- 4. アプリケーションの実行 ---
 if __name__ == '__main__':
     # host='0.0.0.0' で外部からのアクセスを許可
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host="0.0.0.0", port=int(os.getenv('PORT', 7860)))
